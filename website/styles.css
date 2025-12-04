@@ -1,0 +1,722 @@
+/* ===== CSS Variables ===== */
+:root {
+    --bg-primary: #0a0a1a;
+    --bg-secondary: #12122a;
+    --bg-card: #1a1a3a;
+    --bg-glass: rgba(26, 26, 58, 0.8);
+    --accent-primary: #4F8EF7;
+    --accent-secondary: #7B68EE;
+    --accent-gradient: linear-gradient(135deg, #4F8EF7 0%, #7B68EE 100%);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #6a6a8a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-glow: 0 0 40px rgba(79, 142, 247, 0.3);
+    --android-color: #3DDC84;
+    --ios-color: #007AFF;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(79, 142, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(123, 104, 238, 0.15) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Header ===== */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-glow);
+    animation: pulse 2s infinite;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.hero-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ===== Desktop Split View ===== */
+.desktop-content {
+    flex: 1;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.split-view {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.divider {
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, var(--accent-primary) 20%, var(--accent-secondary) 80%, transparent 100%);
+    border-radius: 2px;
+    min-height: 400px;
+}
+
+.platform-card {
+    flex: 1;
+    max-width: 450px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.platform-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.platform-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.android-icon {
+    background: linear-gradient(135deg, #3DDC84 0%, #2DA65A 100%);
+    color: white;
+}
+
+.ios-icon {
+    background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%);
+    color: white;
+}
+
+.platform-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.platform-desc {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+
+/* ===== Download Button ===== */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
+    text-decoration: none;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(79, 142, 247, 0.5);
+}
+
+.download-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== Install Steps ===== */
+.install-steps {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--bg-secondary);
+    color: var(--accent-primary);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ===== iOS Steps (Desktop) ===== */
+.ios-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ios-step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.step-visual {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.step-visual img {
+    max-width: 100px;
+    max-height: 80px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--ios-color);
+}
+
+.step-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--ios-color);
+}
+
+.ios-step p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===== Mobile Cards ===== */
+.mobile-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.8s ease-out;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== iOS Mobile Guide ===== */
+.ios-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.guide-step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    position: relative;
+}
+
+.guide-visual {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.phone-mockup {
+    width: 80px;
+    height: 50px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+}
+
+.browser-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-primary);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 8px;
+}
+
+.url-text {
+    color: var(--text-muted);
+}
+
+.share-btn-demo {
+    width: 16px;
+    height: 16px;
+    color: var(--ios-color);
+}
+
+.share-btn-demo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-mockup {
+    width: 120px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: var(--ios-color);
+    border-radius: 6px;
+    color: white;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.menu-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.menu-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.app-icon-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.app-icon-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.checkmark {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 24px;
+    height: 24px;
+    background: #34C759;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark svg {
+    width: 14px;
+    height: 14px;
+    color: white;
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--ios-color);
+    border-radius: var(--radius-md);
+    animation: pulseRing 2s infinite;
+    pointer-events: none;
+}
+
+.guide-text {
+    flex: 1;
+}
+
+.step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent-gradient);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 12px;
+}
+
+.step-badge.success {
+    background: #34C759;
+}
+
+.guide-text p {
+    display: inline;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.guide-text strong {
+    color: var(--text-primary);
+}
+
+.guide-arrow {
+    display: flex;
+    justify-content: center;
+    color: var(--accent-primary);
+    opacity: 0.5;
+}
+
+.guide-arrow svg {
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+}
+
+.success-step {
+    background: rgba(52, 199, 89, 0.1);
+    border: 1px solid rgba(52, 199, 89, 0.3);
+}
+
+/* ===== Android Mobile Download ===== */
+.download-section {
+    text-align: center;
+}
+
+.app-preview {
+    margin-bottom: 30px;
+}
+
+.app-logo-large {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-glow);
+    margin-bottom: 16px;
+}
+
+.app-preview h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.app-tagline {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.download-btn-large {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 20px;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
+    margin-bottom: 24px;
+    text-decoration: none;
+}
+
+.download-btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(79, 142, 247, 0.5);
+}
+
+.download-btn-large:active {
+    transform: translateY(0);
+}
+
+.download-btn-large svg {
+    width: 28px;
+    height: 28px;
+}
+
+.install-instructions {
+    text-align: left;
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: var(--radius-md);
+}
+
+.install-instructions h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.install-instructions ol {
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.install-instructions li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.footer-link {
+    margin-top: 10px;
+}
+
+.footer-link a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-link a:hover {
+    opacity: 0.8;
+}
+
+/* ===== Visibility Classes ===== */
+.desktop-only,
+.mobile-only,
+.ios-only,
+.android-only {
+    display: none;
+}
+
+/* Desktop Default */
+body.desktop .desktop-only {
+    display: block;
+}
+
+body.desktop .split-view {
+    display: flex;
+}
+
+/* iOS Mobile */
+body.ios .mobile-only,
+body.ios .ios-only {
+    display: block;
+}
+
+/* Android Mobile */
+body.android .mobile-only,
+body.android .android-only {
+    display: block;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(79, 142, 247, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(79, 142, 247, 0.5); }
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .split-view {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .divider {
+        width: 100%;
+        height: 2px;
+        min-height: auto;
+        background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 20%, var(--accent-secondary) 80%, transparent 100%);
+    }
+    
+    .platform-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header { padding: 30px 15px; }
+    .logo { width: 70px; height: 70px; }
+    .app-title { font-size: 2rem; }
+    .hero-title { font-size: 1.5rem; }
+    .hero-description { font-size: 1rem; }
+    .mobile-card { padding: 20px; margin: 15px 0; }
+    .guide-step { flex-direction: column; text-align: center; }
+    .guide-text { text-align: center; }
+}
