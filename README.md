@@ -47,7 +47,7 @@
 
 1. **Repoyu klonlayın**
    ```bash
-   git clone https://github.com/KULLANICI_ADINIZ/filmdex.git
+   git clone https://github.com/HyperDeathh/FILMDEX.git
    cd filmdex
    ```
 
