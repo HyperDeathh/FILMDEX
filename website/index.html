@@ -45,32 +45,33 @@
         <!-- iOS Content -->
         <section class="platform-content ios-only">
             <div class="mobile-card">
-                <h3 class="section-title">📱 Add to Home Screen</h3>
-                <p class="section-desc">Get the full app experience by adding FILMDEX to your home screen.</p>
+                <h3 class="section-title">📱 Get the App</h3>
+                <p class="section-desc">Add FILMDEX to your home screen for the full app experience!</p>
                 
-                <div class="ios-guide">
-                    <div class="guide-step">
-                        <span class="step-badge">1</span>
-                        <p>Tap the <strong>Share button</strong> (square with arrow) at the bottom of Safari</p>
-                    </div>
-                    <div class="guide-step">
-                        <span class="step-badge">2</span>
-                        <p>Scroll down and tap <strong>"Add to Home Screen"</strong></p>
-                    </div>
-                    <div class="guide-step">
-                        <span class="step-badge">3</span>
-                        <p>Tap <strong>"Add"</strong> in the top right corner</p>
-                    </div>
-                </div>
-
                 <a href="https://filmdex-escc.vercel.app" class="launch-btn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="5,3 19,12 5,21"/>
                     </svg>
-                    Open App Now
+                    Open FILMDEX App
                 </a>
 
-                <p class="hint-text">💡 For the best experience, add to your home screen first!</p>
+                <div class="ios-guide">
+                    <p class="guide-title">📌 Then add to your Home Screen:</p>
+                    <div class="guide-step">
+                        <span class="step-badge">1</span>
+                        <p>Tap the <strong>Share button</strong> (square with arrow) at the bottom</p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-badge">2</span>
+                        <p>Scroll and tap <strong>"Add to Home Screen"</strong></p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-badge">3</span>
+                        <p>Tap <strong>"Add"</strong> - Done! 🎉</p>
+                    </div>
+                </div>
+
+                <p class="hint-text">💡 The app will open fullscreen without browser bars!</p>
             </div>
         </section>
 
@@ -158,13 +159,13 @@
                     </a>
                     <div class="ios-steps">
                         <div class="ios-step">
-                            <p><span class="step-number">1</span> Open in Safari</p>
+                            <p><span class="step-number">1</span> Open link in Safari</p>
                         </div>
                         <div class="ios-step">
-                            <p><span class="step-number">2</span> Tap Share button</p>
+                            <p><span class="step-number">2</span> Tap Share → "Add to Home Screen"</p>
                         </div>
                         <div class="ios-step">
-                            <p><span class="step-number">3</span> "Add to Home Screen"</p>
+                            <p><span class="step-number">3</span> Enjoy fullscreen app!</p>
                         </div>
                     </div>
                 </div>
@@ -202,7 +203,7 @@
 
             document.body.classList.remove('ios', 'android', 'desktop', 'standalone');
             
-            // If already installed as PWA, redirect to app
+            // If opened as standalone PWA from this landing page, redirect to app
             if (isStandalone) {
                 window.location.href = 'https://filmdex-escc.vercel.app';
                 return;

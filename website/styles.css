@@ -20,16 +20,8 @@
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* ===== Reset & Base ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-family);
@@ -37,16 +29,12 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: 
         radial-gradient(circle at 20% 20%, rgba(79, 142, 247, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 80% 80%, rgba(123, 104, 238, 0.15) 0%, transparent 40%);
@@ -63,7 +51,7 @@ body::before {
     flex-direction: column;
 }
 
-/* ===== Header ===== */
+/* Header */
 .header {
     text-align: center;
     padding: 40px 20px;
@@ -92,10 +80,9 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -1px;
 }
 
-/* ===== Hero Section ===== */
+/* Hero */
 .hero {
     text-align: center;
     padding: 20px;
@@ -106,7 +93,6 @@ body::before {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 16px;
-    color: var(--text-primary);
 }
 
 .hero-description {
@@ -114,16 +100,12 @@ body::before {
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.8;
 }
 
-/* ===== Platform Content (Hidden by default) ===== */
-.platform-content,
-.desktop-content {
-    display: none;
-}
+/* Platform Content */
+.platform-content, .desktop-content { display: none; }
 
-/* ===== Mobile Card ===== */
+/* Mobile Card */
 .mobile-card {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -147,12 +129,19 @@ body::before {
     margin-bottom: 24px;
 }
 
-/* ===== iOS Guide ===== */
+/* iOS Guide */
 .ios-guide {
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 24px;
+}
+
+.guide-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
 }
 
 .guide-step {
@@ -186,7 +175,7 @@ body::before {
     color: var(--text-primary);
 }
 
-/* ===== Launch Button (iOS) ===== */
+/* Launch Button */
 .launch-btn {
     display: flex;
     align-items: center;
@@ -203,7 +192,7 @@ body::before {
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .launch-btn:hover {
@@ -211,10 +200,7 @@ body::before {
     box-shadow: 0 6px 30px rgba(0, 122, 255, 0.4);
 }
 
-.launch-btn svg {
-    width: 24px;
-    height: 24px;
-}
+.launch-btn svg { width: 24px; height: 24px; }
 
 .hint-text {
     text-align: center;
@@ -222,7 +208,7 @@ body::before {
     font-size: 0.9rem;
 }
 
-/* ===== Download Button (Android) ===== */
+/* Download Button */
 .download-btn-large {
     display: flex;
     align-items: center;
@@ -247,12 +233,9 @@ body::before {
     box-shadow: 0 6px 30px rgba(61, 220, 132, 0.4);
 }
 
-.download-btn-large svg {
-    width: 24px;
-    height: 24px;
-}
+.download-btn-large svg { width: 24px; height: 24px; }
 
-/* ===== Install Instructions ===== */
+/* Install Instructions */
 .install-instructions {
     background: var(--bg-secondary);
     padding: 20px;
@@ -264,7 +247,6 @@ body::before {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--text-primary);
 }
 
 .install-instructions ol {
@@ -272,35 +254,20 @@ body::before {
     color: var(--text-secondary);
 }
 
-.install-instructions li {
-    padding: 6px 0;
-    font-size: 0.95rem;
-}
+.install-instructions li { padding: 6px 0; font-size: 0.95rem; }
 
-/* ===== Web Option ===== */
+/* Web Option */
 .web-option {
     text-align: center;
     padding-top: 16px;
     border-top: 1px solid var(--border-color);
 }
 
-.web-option p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-}
+.web-option p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+.web-link { color: var(--accent-primary); text-decoration: none; font-weight: 600; }
+.web-link:hover { text-decoration: underline; }
 
-.web-link {
-    color: var(--accent-primary);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.web-link:hover {
-    text-decoration: underline;
-}
-
-/* ===== Desktop Split View ===== */
+/* Desktop Split View */
 .split-view {
     display: flex;
     gap: 40px;
@@ -312,7 +279,6 @@ body::before {
 .divider {
     width: 2px;
     background: linear-gradient(180deg, transparent 0%, var(--accent-primary) 20%, var(--accent-secondary) 80%, transparent 100%);
-    border-radius: 2px;
     min-height: 400px;
 }
 
@@ -348,31 +314,11 @@ body::before {
     justify-content: center;
 }
 
-.platform-icon svg {
-    width: 28px;
-    height: 28px;
-}
-
-.android-icon {
-    background: linear-gradient(135deg, #3DDC84 0%, #2DA65A 100%);
-    color: white;
-}
-
-.ios-icon {
-    background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%);
-    color: white;
-}
-
-.platform-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.platform-desc {
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
+.platform-icon svg { width: 28px; height: 28px; }
+.android-icon { background: linear-gradient(135deg, #3DDC84 0%, #2DA65A 100%); color: white; }
+.ios-icon { background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%); color: white; }
+.platform-title { font-size: 1.5rem; font-weight: 700; }
+.platform-desc { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem; }
 
 .download-btn {
     display: inline-flex;
@@ -395,19 +341,15 @@ body::before {
     box-shadow: 0 6px 30px rgba(79, 142, 247, 0.4);
 }
 
-.download-btn svg {
-    width: 20px;
-    height: 20px;
-}
+.download-btn svg { width: 20px; height: 20px; }
 
-/* ===== Install Steps ===== */
-.install-steps {
+.install-steps, .ios-steps {
     margin-top: 24px;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
 }
 
-.step {
+.step, .ios-step p {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -429,26 +371,7 @@ body::before {
     font-size: 0.8rem;
 }
 
-/* ===== iOS Steps (Desktop) ===== */
-.ios-steps {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-}
-
-.ios-step {
-    padding: 10px 0;
-}
-
-.ios-step p {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-/* ===== Desktop Web Option ===== */
+/* Desktop Web Option */
 .desktop-web-option {
     text-align: center;
     padding: 30px;
@@ -457,10 +380,7 @@ body::before {
     margin-top: 20px;
 }
 
-.desktop-web-option p {
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-}
+.desktop-web-option p { color: var(--text-secondary); margin-bottom: 16px; }
 
 .web-app-btn {
     display: inline-flex;
@@ -469,13 +389,11 @@ body::before {
     padding: 14px 32px;
     background: var(--accent-gradient);
     color: white;
-    border: none;
     border-radius: var(--radius-md);
     font-size: 1rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .web-app-btn:hover {
@@ -483,12 +401,9 @@ body::before {
     box-shadow: 0 6px 30px rgba(79, 142, 247, 0.4);
 }
 
-.web-app-btn svg {
-    width: 20px;
-    height: 20px;
-}
+.web-app-btn svg { width: 20px; height: 20px; }
 
-/* ===== Footer ===== */
+/* Footer */
 .footer {
     text-align: center;
     padding: 30px 20px;
@@ -497,86 +412,26 @@ body::before {
     margin-top: auto;
 }
 
-.footer-link {
-    margin-top: 10px;
-}
+.footer-link { margin-top: 10px; }
+.footer-link a { color: var(--accent-primary); text-decoration: none; }
+.footer-link a:hover { text-decoration: underline; }
 
-.footer-link a {
-    color: var(--accent-primary);
-    text-decoration: none;
-}
+/* Visibility */
+body.ios .ios-only { display: block; }
+body.android .android-only { display: block; }
+body.desktop .desktop-only, body.desktop .desktop-content { display: block; }
 
-.footer-link a:hover {
-    text-decoration: underline;
-}
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(79, 142, 247, 0.3); } 50% { box-shadow: 0 0 40px rgba(79, 142, 247, 0.5); } }
 
-/* ===== Visibility Classes ===== */
-body.ios .ios-only {
-    display: block;
-}
-
-body.android .android-only {
-    display: block;
-}
-
-body.desktop .desktop-only {
-    display: block;
-}
-
-body.desktop .desktop-content {
-    display: block;
-}
-
-/* ===== Animations ===== */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(79, 142, 247, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(79, 142, 247, 0.5); }
-}
-
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 900px) {
-    .split-view {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .divider {
-        width: 100%;
-        height: 2px;
-        min-height: auto;
-        background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 20%, var(--accent-secondary) 80%, transparent 100%);
-    }
-    
-    .platform-card {
-        max-width: 100%;
-    }
+    .split-view { flex-direction: column; gap: 20px; }
+    .divider { width: 100%; height: 2px; min-height: auto; background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 20%, var(--accent-secondary) 80%, transparent 100%); }
+    .platform-card { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
@@ -584,7 +439,6 @@ body.desktop .desktop-content {
     .logo { width: 70px; height: 70px; }
     .app-title { font-size: 2rem; }
     .hero-title { font-size: 1.5rem; }
-    .hero-description { font-size: 1rem; }
     .mobile-card { padding: 20px; margin: 15px 0; }
     .guide-step { flex-direction: column; text-align: center; }
 }
