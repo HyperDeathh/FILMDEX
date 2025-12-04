@@ -5,8 +5,13 @@
 <h1 align="center">FILMDEX</h1>
 
 <p align="center">
-  <b>Film & Dizi Keşif Uygulaması</b><br>
-  Binlerce film ve diziyi keşfedin, izlediklerinizi kaydedin, kişiselleştirilmiş listenizi oluşturun.
+  <b>Movie & TV Show Discovery App</b><br>
+  Discover thousands of movies and TV shows, save your favorites, and create your personalized watchlist.
+</p>
+
+<p align="center">
+  <a href="README.md">🇬🇧 English</a> •
+  <a href="README_TR.md">🇹🇷 Türkçe</a>
 </p>
 
 <p align="center">
@@ -19,136 +24,133 @@
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-- 🎬 **Popüler İçerikler** - Güncel popüler filmler ve diziler
-- 🔍 **Gelişmiş Arama** - Türe göre filtreleme ve arama
-- 💾 **Kaydetme** - Favori içeriklerinizi kaydedin
-- 📜 **İzleme Geçmişi** - İzlediklerinizi takip edin
-- 🌙 **Karanlık Tema** - Göz yormayan modern tasarım
-- 📱 **Cross-Platform** - iOS ve Android desteği
+- 🎬 **Popular Content** - Browse trending movies and TV shows
+- 🔍 **Advanced Search** - Filter by genre and search titles
+- 💾 **Save Favorites** - Bookmark your favorite content
+- 📜 **Watch History** - Track what you've watched
+- 🌙 **Dark Theme** - Modern, eye-friendly design
+- 📱 **Cross-Platform** - iOS and Android support
 
-## 📸 Ekran Görüntüleri
+## 📸 Screenshots
 
 <p align="center">
-  <i>Yakında eklenecek...</i>
+  <i>Coming soon...</i>
 </p>
 
-## 🚀 Kurulum
+## 🚀 Installation
 
-### Gereksinimler
+### Requirements
 
-- [Node.js](https://nodejs.org/) (v18 veya üzeri)
-- [npm](https://www.npmjs.com/) veya [yarn](https://yarnpkg.com/)
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
 - [TMDB API Key](https://www.themoviedb.org/documentation/api)
 
-### Adımlar
+### Steps
 
-1. **Repoyu klonlayın**
+1. **Clone the repository**
    ```bash
    git clone https://github.com/HyperDeathh/FILMDEX.git
-   cd filmdex
+   cd FILMDEX
    ```
 
-2. **Bağımlılıkları yükleyin**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Ortam değişkenlerini ayarlayın**
+3. **Set up environment variables**
    
-   `.env` dosyası oluşturun:
+   Copy `.env.example` to `.env` and add your TMDB API key:
+   ```bash
+   cp .env.example .env
+   ```
+   
    ```env
    EXPO_PUBLIC_MOVIE_API_KEY=your_tmdb_api_key_here
    ```
 
-4. **Uygulamayı başlatın**
+4. **Start the app**
    ```bash
    npx expo start
    ```
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
-filmdex/
-├── app/                    # Expo Router sayfaları
-│   ├── (tabs)/            # Tab navigasyon sayfaları
-│   │   ├── index.tsx      # Ana sayfa
-│   │   ├── search.tsx     # Arama sayfası
-│   │   ├── saved.tsx      # Kaydedilenler
-│   │   └── profile.tsx    # Profil
-│   ├── movie/[id].tsx     # Film detay
-│   └── history.tsx        # İzleme geçmişi
-├── components/            # Yeniden kullanılabilir bileşenler
-├── context/               # React Context dosyaları
-├── services/              # API servisleri
-├── assets/                # Görseller, fontlar, iconlar
-└── website/               # Tanıtım web sitesi
+FILMDEX/
+├── app/                    # Expo Router pages
+│   ├── (tabs)/            # Tab navigation screens
+│   │   ├── index.tsx      # Home screen
+│   │   ├── search.tsx     # Search screen
+│   │   ├── saved.tsx      # Saved items
+│   │   └── profile.tsx    # Profile screen
+│   ├── movie/[id].tsx     # Movie details
+│   └── history.tsx        # Watch history
+├── components/            # Reusable components
+├── context/               # React Context providers
+├── services/              # API services
+├── assets/                # Images, fonts, icons
+└── website/               # Landing page website
 ```
 
-## 🛠️ Teknolojiler
+## 🛠️ Tech Stack
 
-| Kategori | Teknoloji |
+| Category | Technology |
 |----------|-----------|
 | Framework | React Native + Expo |
-| Dil | TypeScript |
-| Navigasyon | Expo Router |
+| Language | TypeScript |
+| Navigation | Expo Router |
 | Styling | NativeWind (TailwindCSS) |
 | State | React Context |
 | Storage | AsyncStorage |
 | API | TMDB API |
-| Animasyonlar | Reanimated |
+| Animations | Reanimated |
 
-## 🔧 Yapılandırma
+## 🔧 Configuration
 
 ### TMDB API
 
-1. [TMDB](https://www.themoviedb.org/) hesabı oluşturun
-2. API anahtarınızı alın
-3. `.env` dosyasına ekleyin
+1. Create an account at [TMDB](https://www.themoviedb.org/)
+2. Get your API key from settings
+3. Add it to your `.env` file
 
-### Özel Yapılandırmalar
+### Build APK
 
-`app.json` dosyasından uygulama ayarlarını düzenleyebilirsiniz:
-- Uygulama adı
-- İkonlar
-- Splash screen
-- Tema renkleri
-
-## 📦 Build
-
-### Android APK
 ```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Login to Expo
+eas login
+
+# Build APK
 eas build -p android --profile preview
 ```
 
-### iOS
-```bash
-eas build -p ios --profile preview
-```
+## 🤝 Contributing
 
-## 🤝 Katkıda Bulunun
+Contributions are welcome! Please follow these steps:
 
-Katkılarınızı bekliyoruz! Lütfen şu adımları izleyin:
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-1. Bu repoyu fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Pull Request açın
+## 📄 License
 
-## 📄 Lisans
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+## 📬 Contact
 
-## 📬 İletişim
-
-Sorularınız veya önerileriniz için issue açabilirsiniz.
+For questions or suggestions, feel free to open an issue.
 
 ---
 
 <p align="center">
-  TMDB API kullanılarak geliştirilmiştir.<br>
+  Built with TMDB API<br>
   <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="120" alt="TMDB">
 </p>
