@@ -13,10 +13,6 @@
     <link rel="apple-touch-icon" href="assets/logo.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/logo.png">
-    
-    <!-- Splash Screens for iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
     
     <title>FILMDEX - Discover Movies & TV Shows</title>
     
@@ -37,25 +33,81 @@
             </div>
         </header>
 
-        <!-- Hero Section (Desktop Only) -->
-        <section class="hero desktop-only">
+        <!-- Hero Section (All Platforms) -->
+        <section class="hero">
             <h2 class="hero-title">Discover Movies & TV Shows</h2>
             <p class="hero-description">
                 Explore thousands of movies and TV shows with FILMDEX. Save your favorites, 
-                track what you've watched, and get personalized recommendations. 
-                Your entertainment journey starts here.
+                track what you've watched, and get personalized recommendations.
             </p>
         </section>
 
-        <!-- Mobile Hero (iOS/Android) -->
-        <section class="hero mobile-only">
-            <h2 class="hero-title">Welcome!</h2>
-            <p class="hero-description">
-                Add FILMDEX to your device and start discovering movies & TV shows.
-            </p>
+        <!-- iOS Content -->
+        <section class="platform-content ios-only">
+            <div class="mobile-card">
+                <h3 class="section-title">📱 Add to Home Screen</h3>
+                <p class="section-desc">Get the full app experience by adding FILMDEX to your home screen.</p>
+                
+                <div class="ios-guide">
+                    <div class="guide-step">
+                        <span class="step-badge">1</span>
+                        <p>Tap the <strong>Share button</strong> (square with arrow) at the bottom of Safari</p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-badge">2</span>
+                        <p>Scroll down and tap <strong>"Add to Home Screen"</strong></p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-badge">3</span>
+                        <p>Tap <strong>"Add"</strong> in the top right corner</p>
+                    </div>
+                </div>
+
+                <a href="https://filmdex-escc.vercel.app" class="launch-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5,3 19,12 5,21"/>
+                    </svg>
+                    Open App Now
+                </a>
+
+                <p class="hint-text">💡 For the best experience, add to your home screen first!</p>
+            </div>
         </section>
 
-        <!-- Desktop Split View -->
+        <!-- Android Content -->
+        <section class="platform-content android-only">
+            <div class="mobile-card">
+                <h3 class="section-title">📥 Download App</h3>
+                <p class="section-desc">Get the native Android experience with our APK.</p>
+
+                <a href="https://github.com/HyperDeathh/FILMDEX/releases/latest/download/filmdex.apk" class="download-btn-large">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7,10 12,15 17,10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Download APK
+                </a>
+
+                <div class="install-instructions">
+                    <h5>Installation Steps:</h5>
+                    <ol>
+                        <li>Tap the download button above</li>
+                        <li>Open the downloaded APK file</li>
+                        <li>Allow "Install from unknown sources" if prompted</li>
+                        <li>Tap "Install" and wait for completion</li>
+                        <li>Open FILMDEX and enjoy!</li>
+                    </ol>
+                </div>
+
+                <div class="web-option">
+                    <p>Or use the web version:</p>
+                    <a href="https://filmdex-escc.vercel.app" class="web-link">Open Web App →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desktop Content -->
         <section class="desktop-content desktop-only">
             <div class="split-view">
                 <!-- Android Side -->
@@ -63,15 +115,13 @@
                     <div class="platform-header">
                         <div class="platform-icon android-icon">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.6,11.48V9.17A1.52,1.52,0,0,0,16.08,7.65H14.27V6.12A1,1,0,0,0,13.27,5.12H10.72A1,1,0,0,0,9.72,6.12V7.65H7.92A1.52,1.52,0,0,0,6.4,9.17V11.48A4.29,4.29,0,0,0,5.35,14.1a4.34,4.34,0,0,0,4.34,4.34h4.62a4.34,4.34,0,0,0,4.34-4.34A4.29,4.29,0,0,0,17.6,11.48Z"/>
-                                <rect x="7" y="2" width="2" height="3" rx="1"/>
-                                <rect x="15" y="2" width="2" height="3" rx="1"/>
+                                <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
                             </svg>
                         </div>
                         <h3 class="platform-title">Android</h3>
                     </div>
-                    <p class="platform-desc">Download and install the APK file</p>
-                    <a href="https://github.com/HyperDeathh/FILMDEX/releases/latest/download/filmdex.apk" class="download-btn" id="apk-download">
+                    <p class="platform-desc">Download the native APK for the best Android experience.</p>
+                    <a href="https://github.com/HyperDeathh/FILMDEX/releases/latest/download/filmdex.apk" class="download-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                             <polyline points="7,10 12,15 17,10"/>
@@ -80,9 +130,9 @@
                         Download APK
                     </a>
                     <div class="install-steps">
-                        <p class="step"><span class="step-number">1</span> Open the downloaded APK file</p>
-                        <p class="step"><span class="step-number">2</span> Tap "Install" when prompted</p>
-                        <p class="step"><span class="step-number">3</span> Open FILMDEX and enjoy!</p>
+                        <p class="step"><span class="step-number">1</span> Download the APK file</p>
+                        <p class="step"><span class="step-number">2</span> Open and install</p>
+                        <p class="step"><span class="step-number">3</span> Enjoy FILMDEX!</p>
                     </div>
                 </div>
 
@@ -99,146 +149,37 @@
                         </div>
                         <h3 class="platform-title">iOS</h3>
                     </div>
-                    <p class="platform-desc">Add to Home Screen from Safari</p>
+                    <p class="platform-desc">Add to Home Screen from Safari for the app experience.</p>
+                    <a href="https://filmdex-escc.vercel.app" class="download-btn" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                        Open Web App
+                    </a>
                     <div class="ios-steps">
                         <div class="ios-step">
-                            <div class="step-visual">
-                                <div class="step-icon share-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                        <polyline points="16,6 12,2 8,6"/>
-                                        <line x1="12" y1="2" x2="12" y2="15"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p><span class="step-number">1</span> Tap the Share button in Safari</p>
+                            <p><span class="step-number">1</span> Open in Safari</p>
                         </div>
                         <div class="ios-step">
-                            <div class="step-visual">
-                                <div class="step-icon add-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                        <line x1="12" y1="8" x2="12" y2="16"/>
-                                        <line x1="8" y1="12" x2="16" y2="12"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p><span class="step-number">2</span> Select "Add to Home Screen"</p>
+                            <p><span class="step-number">2</span> Tap Share button</p>
+                        </div>
+                        <div class="ios-step">
+                            <p><span class="step-number">3</span> "Add to Home Screen"</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- iOS Mobile View -->
-        <section class="ios-mobile-content ios-only">
-            <div class="mobile-card">
-                <h3 class="section-title">How to Add to Home Screen</h3>
-                <div class="ios-guide">
-                    <div class="guide-step">
-                        <div class="guide-visual">
-                            <div class="phone-mockup">
-                                <div class="browser-bar">
-                                    <span class="url-text">filmdex.app</span>
-                                    <div class="share-btn-demo">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                            <polyline points="16,6 12,2 8,6"/>
-                                            <line x1="12" y1="2" x2="12" y2="15"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pulse-ring"></div>
-                        </div>
-                        <div class="guide-text">
-                            <span class="step-badge">1</span>
-                            <p>Tap the <strong>Share button</strong> at the bottom of Safari</p>
-                        </div>
-                    </div>
-                    
-                    <div class="guide-arrow">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                        </svg>
-                    </div>
-
-                    <div class="guide-step">
-                        <div class="guide-visual">
-                            <div class="menu-mockup">
-                                <div class="menu-item">
-                                    <div class="menu-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                            <line x1="12" y1="8" x2="12" y2="16"/>
-                                            <line x1="8" y1="12" x2="16" y2="12"/>
-                                        </svg>
-                                    </div>
-                                    <span>Add to Home Screen</span>
-                                </div>
-                            </div>
-                            <div class="pulse-ring"></div>
-                        </div>
-                        <div class="guide-text">
-                            <span class="step-badge">2</span>
-                            <p>Select <strong>"Add to Home Screen"</strong> from the menu</p>
-                        </div>
-                    </div>
-                    
-                    <div class="guide-arrow">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                        </svg>
-                    </div>
-
-                    <div class="guide-step success-step">
-                        <div class="guide-visual">
-                            <div class="app-icon-preview">
-                                <img src="assets/logo.png" alt="FILMDEX">
-                            </div>
-                            <div class="checkmark">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20,6 9,17 4,12"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="guide-text">
-                            <span class="step-badge success">✓</span>
-                            <p>FILMDEX is now on your home screen!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Android Mobile View -->
-        <section class="android-mobile-content android-only">
-            <div class="mobile-card">
-                <h3 class="section-title">Download the App</h3>
-                <div class="download-section">
-                    <div class="app-preview">
-                        <img src="assets/logo.png" alt="FILMDEX" class="app-logo-large">
-                        <h4>FILMDEX</h4>
-                        <p class="app-tagline">Discover Movies & TV Shows</p>
-                    </div>
-                    <a href="https://github.com/HyperDeathh/FILMDEX/releases/latest/download/filmdex.apk" class="download-btn-large" id="apk-download-mobile">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7,10 12,15 17,10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        Download APK
-                    </a>
-                    <div class="install-instructions">
-                        <h5>Installation Steps:</h5>
-                        <ol>
-                            <li>Tap the download notification when complete</li>
-                            <li>Allow installation from unknown sources if prompted</li>
-                            <li>Tap "Install" to begin installation</li>
-                            <li>Tap "Open" when installation is complete</li>
-                        </ol>
-                    </div>
-                </div>
+            <!-- Web App Link for Desktop -->
+            <div class="desktop-web-option">
+                <p>Want to try it now?</p>
+                <a href="https://filmdex-escc.vercel.app" class="web-app-btn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polygon points="10,8 16,12 10,16"/>
+                    </svg>
+                    Launch Web App
+                </a>
             </div>
         </section>
 
@@ -261,10 +202,9 @@
 
             document.body.classList.remove('ios', 'android', 'desktop', 'standalone');
             
+            // If already installed as PWA, redirect to app
             if (isStandalone) {
-                // Already installed as PWA, redirect to app
-                document.body.classList.add('standalone');
-                window.location.href = 'https://your-expo-app-url.com';
+                window.location.href = 'https://filmdex-escc.vercel.app';
                 return;
             }
             
@@ -277,18 +217,8 @@
             }
         }
 
-        // Register Service Worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', detectDevice);
-        window.addEventListener('resize', detectDevice);
     </script>
 </body>
 </html>
