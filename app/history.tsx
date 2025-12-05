@@ -12,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { icons } from '@/assets/icons';
 import { images } from '@/assets/images';
 import { useSavedMovies, SavedMovie } from '@/context/SavedMoviesContext';
+import { responsive, hp, wp } from '@/utils/responsive';
 
 const History = () => {
   const router = useRouter();
@@ -68,7 +69,7 @@ const History = () => {
         data={watchedMovies}
         renderItem={renderHistoryItem}
         keyExtractor={(item) => `history-${item.id}`}
-        contentContainerStyle={{ paddingBottom: 100, paddingTop: 20 }}
+        contentContainerStyle={{ paddingBottom: responsive.contentPaddingBottom, paddingTop: 20 }}
         ListEmptyComponent={() => (
             <View className="items-center justify-center mt-20 px-10">
                 <View className="bg-dark-200 p-6 rounded-full mb-6">
@@ -83,7 +84,20 @@ const History = () => {
       />
 
       <TouchableOpacity
-        className="absolute bottom-5 left-0 right-0 mx-5 bg-accent rounded-lg py-3.5 flex flex-row items-center justify-center z-50"
+        style={{
+          position: 'absolute',
+          bottom: hp(2),
+          left: 0,
+          right: 0,
+          marginHorizontal: wp(5),
+          backgroundColor: '#ab8bff',
+          borderRadius: 8,
+          paddingVertical: hp(1.7),
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 50
+        }}
         onPress={router.back}
       >
         <Image

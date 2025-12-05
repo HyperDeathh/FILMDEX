@@ -1,9 +1,8 @@
-import { View, Text, ImageBackground, Image, Dimensions } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native'
 import React from 'react'
 import { withLayoutContext } from 'expo-router'
 import { createMaterialTopTabNavigator, MaterialTopTabNavigationOptions, MaterialTopTabNavigationEventMap } from '@react-navigation/material-top-tabs'
 import { ParamListBase, TabNavigationState } from '@react-navigation/native'
-import { images } from '@/assets/images'
 import { icons } from '@/assets/icons'
 
 const { Navigator } = createMaterialTopTabNavigator();
@@ -15,45 +14,70 @@ export const MaterialTopTabs = withLayoutContext<
   MaterialTopTabNavigationEventMap
 >(Navigator);
 
-// Tab bar boyutları
+// Ekran boyutlarını al - sabit değerler
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
+// Tab bar boyutları - sabit piksel değerleri
 const HORIZONTAL_MARGIN = 20;
-const TAB_BAR_HEIGHT = 64;
+const TAB_BAR_HEIGHT = 60;
 const TAB_BAR_WIDTH = SCREEN_WIDTH - (HORIZONTAL_MARGIN * 2);
 const TAB_WIDTH = TAB_BAR_WIDTH / 4;
+const BORDER_RADIUS = 30;
+
+// Highlight boyutları - tab içinde ortalanmış pill
+const HIGHLIGHT_WIDTH = TAB_WIDTH * 0.85;
+const HIGHLIGHT_HEIGHT = TAB_BAR_HEIGHT * 0.7;
 
 function TabIcon({ focused, icon, title }: { focused: boolean; icon: any; title: string }) {
   if (focused) {
     return (
-      <View style={{ width: TAB_WIDTH, height: TAB_BAR_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
-        <ImageBackground
-          source={images.highlight}
-          style={{ 
-            flexDirection: 'row',
-            width: TAB_WIDTH - 8,
-            height: TAB_BAR_HEIGHT - 16,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 50,
-            overflow: 'hidden',
-          }}
-          resizeMode="cover"
-        >
-          <Image source={icon} tintColor="#151312" style={{ width: 20, height: 20 }} />
-          <Text style={{ color: '#151312', fontSize: 14, fontWeight: '600', marginLeft: 6 }}>
-            {title}
-          </Text>
-        </ImageBackground>
+      <View style={styles.tabContainer}>
+        <View style={styles.highlight}>
+          <Image source={icon} tintColor="#151312" style={styles.iconFocused} />
+          <Text style={styles.textFocused}>{title}</Text>
+        </View>
       </View>
     );
   }
 
   return (
-    <View style={{ width: TAB_WIDTH, height: TAB_BAR_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
-      <Image source={icon} tintColor="#A8B5DB" style={{ width: 20, height: 20 }} />
+    <View style={styles.tabContainer}>
+      <Image source={icon} tintColor="#A8B5DB" style={styles.icon} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  tabContainer: {
+    width: TAB_WIDTH,
+    height: TAB_BAR_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  highlight: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ab8bff',
+    width: HIGHLIGHT_WIDTH,
+    height: HIGHLIGHT_HEIGHT,
+    borderRadius: HIGHLIGHT_HEIGHT / 2,
+  },
+  iconFocused: {
+    width: 18,
+    height: 18,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+  },
+  textFocused: {
+    color: '#151312',
+    fontSize: 12,
+    fontWeight: '600',
+    marginLeft: 6,
+  },
+});
 
 const _Layout = () => {
   return (
@@ -64,9 +88,9 @@ const _Layout = () => {
         tabBarIndicatorStyle: { height: 0 },
         tabBarStyle: {
           backgroundColor: '#0f0D23',
-          borderRadius: 50,
+          borderRadius: BORDER_RADIUS,
           marginHorizontal: HORIZONTAL_MARGIN,
-          marginBottom: 36,
+          marginBottom: 30,
           height: TAB_BAR_HEIGHT,
           position: 'absolute',
           left: 0,
@@ -85,8 +109,7 @@ const _Layout = () => {
         tabBarItemStyle: {
           width: TAB_WIDTH,
           height: TAB_BAR_HEIGHT,
-          paddingBottom: 25,
-          paddingRight: 14,
+          padding: 0,
           margin: 0,
         },
         swipeEnabled: true,

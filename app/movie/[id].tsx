@@ -13,6 +13,7 @@ import { icons } from "@/assets/icons";
 import useFetch from "@/services/useFetch";
 import { fetchMovieDetails } from "@/services/api";
 import { useSavedMovies } from "@/context/SavedMoviesContext";
+import { responsive, hp, wp } from "@/utils/responsive";
 
 interface MovieInfoProps {
   label: string;
@@ -60,23 +61,33 @@ const Details = () => {
 
   return (
     <View className="bg-primary flex-1">
-      <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: hp(9.5) }}>
         <View>
           <Image
             source={{
               uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}`,
             }}
-            className="w-full h-[550px]"
+            style={{ width: '100%', height: responsive.posterHeight }}
             resizeMode="stretch"
           />
 
           <TouchableOpacity 
-            className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center"
+            style={{ 
+              position: 'absolute', 
+              bottom: hp(2), 
+              right: wp(5), 
+              borderRadius: 50,
+              width: wp(14),
+              height: wp(14),
+              backgroundColor: 'white',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
             onPress={handleSave}
           >
             <Image
               source={icons.save}
-              className="w-6 h-6"
+              style={{ width: wp(6), height: wp(6) }}
               resizeMode="contain"
               tintColor={isSaved ? "#ab8bff" : "#000"}
             />
@@ -134,7 +145,20 @@ const Details = () => {
       </ScrollView>
 
       <TouchableOpacity
-        className="absolute bottom-5 left-0 right-0 mx-5 bg-accent rounded-lg py-3.5 flex flex-row items-center justify-center z-50"
+        style={{
+          position: 'absolute',
+          bottom: hp(2),
+          left: 0,
+          right: 0,
+          marginHorizontal: wp(5),
+          backgroundColor: '#ab8bff',
+          borderRadius: 8,
+          paddingVertical: hp(1.7),
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 50
+        }}
         onPress={router.back}
       >
         <Image

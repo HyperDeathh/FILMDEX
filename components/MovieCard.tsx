@@ -2,6 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, Image, View } from "react-native";
 import { Link } from "expo-router";
 import { icons } from "@/assets/icons";
+import { responsive } from "@/utils/responsive";
 
 type Props = {
   id: number;
@@ -21,7 +22,7 @@ const MovieCard: React.FC<Props> = ({ id, poster_path, title, vote_average, rele
       <TouchableOpacity className="w-1/3 pr-2">
         <Image
           source={{ uri: imageUri }}
-          className="w-full h-52 rounded-lg"
+          style={{ width: '100%', height: responsive.movieCardHeight, borderRadius: 8 }}
           resizeMode="cover"
         />
         <Text className="text-sm font-bold text-white mt-2" numberOfLines={1}>{title}</Text>

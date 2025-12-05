@@ -14,6 +14,7 @@ import MovieCard from "@/components/MovieCard";
 import { useRouter } from "expo-router";
 import { icons } from "@/assets/icons";
 import { images } from "@/assets/images";
+import { responsive } from "@/utils/responsive";
 
 type MediaType = "movies" | "series";
 
@@ -230,7 +231,7 @@ export default function Index() {
           justifyContent: "space-between",
           marginBottom: 10,
         }}
-        contentContainerStyle={{ paddingHorizontal: 5, paddingBottom: 140 }}
+        contentContainerStyle={{ paddingHorizontal: 5, paddingBottom: responsive.contentPaddingBottomLarge }}
         ListHeaderComponent={renderHeader}
         ListHeaderComponentStyle={{ paddingBottom: 10 }}
         ListFooterComponent={renderFooter}
@@ -243,11 +244,12 @@ export default function Index() {
         windowSize={5}
         initialNumToRender={9}
         getItemLayout={(data, index) => ({
-          length: 180,
-          offset: 180 * Math.floor(index / 3),
+          length: responsive.movieCardHeight + 50,
+          offset: (responsive.movieCardHeight + 50) * Math.floor(index / 3),
           index,
         })}
       />
     </View>
   );
 }
+

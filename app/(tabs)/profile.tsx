@@ -16,6 +16,7 @@ import { useAuth } from '@/context/AuthContext'
 import { useSavedMovies } from '@/context/SavedMoviesContext'
 import { useRouter } from 'expo-router'
 import CustomAlert from '@/components/CustomAlert'
+import { responsive } from '@/utils/responsive'
 
 type AuthMode = 'login' | 'register'
 
@@ -103,7 +104,7 @@ const Profile = () => {
 
         <ScrollView
           className="flex-1"
-          contentContainerStyle={{ paddingBottom: 120 }}
+          contentContainerStyle={{ paddingBottom: responsive.contentPaddingBottom }}
           showsVerticalScrollIndicator={false}
         >
           {/* Header */}
@@ -290,7 +291,7 @@ const Profile = () => {
       >
         <ScrollView
           className="flex-1"
-          contentContainerStyle={{ paddingBottom: 120, flexGrow: 1 }}
+          contentContainerStyle={{ paddingBottom: responsive.contentPaddingBottom, flexGrow: 1 }}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >

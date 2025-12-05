@@ -14,6 +14,7 @@ import MovieCard from "@/components/MovieCard";
 import { fetchMovies, fetchTvShows, fetchGenres, Genre, Movie, TvShow } from "@/services/api";
 import { icons } from "@/assets/icons";
 import SearchBar from "@/components/SearchBar";
+import { responsive } from "@/utils/responsive";
 
 interface MediaItem {
   id: number;
@@ -226,7 +227,7 @@ const Search = () => {
           justifyContent: "space-between",
           marginVertical: 8,
         }}
-        contentContainerStyle={{ paddingBottom: 120 }}
+        contentContainerStyle={{ paddingBottom: responsive.contentPaddingBottom }}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooter}

@@ -14,6 +14,7 @@ import { useAuth } from '@/context/AuthContext'
 import MovieCard from '@/components/MovieCard'
 import { useRouter } from 'expo-router'
 import CustomAlert from '@/components/CustomAlert'
+import { responsive } from '@/utils/responsive'
 
 type FilterType = 'all' | 'movie' | 'tv'
 type SortType = 'recent' | 'title' | 'rating'
@@ -374,7 +375,7 @@ const Saved = () => {
         ListHeaderComponent={renderHeader}
         ListEmptyComponent={renderEmptyState}
         contentContainerStyle={{
-          paddingBottom: 120,
+          paddingBottom: responsive.contentPaddingBottom,
           flexGrow: filteredMovies.length === 0 ? 1 : undefined
         }}
         showsVerticalScrollIndicator={false}

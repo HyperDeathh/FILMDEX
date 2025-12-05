@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a1a" />
+  <meta name="description" content="FILMDEX - Discover movies and TV shows" />
+  <title>FILMDEX</title>
+  <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/images/logo.png" />
+  <style>
+    /* Desktop Web Styles */
+    @media (min-width: 769px) {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%) !important;
+        min-height: 100vh;
+      }
+      
+      #root {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        min-height: 100vh !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+      }
+      
+      #root > div:first-child {
+        max-width: 480px !important;
+        width: 100% !important;
+        min-height: calc(100vh - 40px) !important;
+        background: #0f0D23 !important;
+        border-radius: 32px !important;
+        overflow: hidden !important;
+        box-shadow: 
+          0 0 60px rgba(171, 139, 255, 0.15),
+          0 20px 60px rgba(0, 0, 0, 0.4) !important;
+        position: relative !important;
+      }
+      
+      /* Phone notch effect */
+      #root > div:first-child::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 28px;
+        background: #0a0a15;
+        border-radius: 0 0 16px 16px;
+        z-index: 9999;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgba(171, 139, 255, 0.3);
+        border-radius: 3px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(171, 139, 255, 0.5);
+      }
+    }
+    
+    /* Mobile Web Styles */
+    @media (max-width: 768px) {
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        background: #0f0D23 !important;
+      }
+    }
+    
+    /* Common styles */
+    html, body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    ::selection {
+      background: rgba(171, 139, 255, 0.3);
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
