@@ -1,10 +1,10 @@
-import { View, Text, Image, StyleSheet, Dimensions, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import React from 'react';
 import { withLayoutContext } from 'expo-router';
 import { createMaterialTopTabNavigator, MaterialTopTabNavigationOptions, MaterialTopTabNavigationEventMap } from '@react-navigation/material-top-tabs';
 import { ParamListBase, TabNavigationState } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { icons } from '@/assets/icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const { Navigator } = createMaterialTopTabNavigator();
 
@@ -27,33 +27,33 @@ const TAB_WIDTH = TAB_BAR_WIDTH / TAB_COUNT;
 const BORDER_RADIUS = 30;
 
 // Icon boyutları
-const ICON_SIZE = SCREEN_WIDTH * 0.055;
-const ICON_SIZE_FOCUSED = SCREEN_WIDTH * 0.045;
+const ICON_SIZE = Math.min(SCREEN_WIDTH * 0.06, 24);
+const ICON_SIZE_FOCUSED = Math.min(SCREEN_WIDTH * 0.05, 20);
 
 // Highlight boyutları
 const HIGHLIGHT_WIDTH = TAB_WIDTH * 0.88;
 const HIGHLIGHT_HEIGHT = TAB_BAR_HEIGHT * 0.72;
 
-// Tab config
-const TAB_CONFIG: { [key: string]: { icon: any; title: string } } = {
-  index: { icon: icons.home, title: 'Home' },
-  search: { icon: icons.search, title: 'Search' },
-  saved: { icon: icons.save, title: 'Saved' },
-  profile: { icon: icons.person, title: 'Profile' },
+// Tab config with Ionicons names
+const TAB_CONFIG: { [key: string]: { icon: keyof typeof Ionicons.glyphMap; iconFocused: keyof typeof Ionicons.glyphMap; title: string } } = {
+  index: { icon: 'home-outline', iconFocused: 'home', title: 'Home' },
+  search: { icon: 'search-outline', iconFocused: 'search', title: 'Search' },
+  saved: { icon: 'bookmark-outline', iconFocused: 'bookmark', title: 'Saved' },
+  profile: { icon: 'person-outline', iconFocused: 'person', title: 'Profile' },
 };
 
-function TabIcon({ focused, icon, title }: { focused: boolean; icon: any; title: string }) {
+function TabIcon({ focused, iconName, iconFocusedName, title }: { focused: boolean; iconName: keyof typeof Ionicons.glyphMap; iconFocusedName: keyof typeof Ionicons.glyphMap; title: string }) {
   if (focused) {
     return (
       <View style={styles.highlight}>
-        <Image source={icon} tintColor="#151312" style={styles.iconFocused} />
+        <Ionicons name={iconFocusedName} size={ICON_SIZE_FOCUSED} color="#151312" />
         <Text style={styles.textFocused}>{title}</Text>
       </View>
     );
   }
 
   return (
-    <Image source={icon} tintColor="#A8B5DB" style={styles.icon} />
+    <Ionicons name={iconName} size={ICON_SIZE} color="#A8B5DB" />
   );
 }
 
@@ -73,7 +73,7 @@ function CustomTabBar({ state, navigation }: any) {
       <View style={styles.tabBar}>
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
-          const config = TAB_CONFIG[route.name] || { icon: icons.home, title: route.name };
+          const config = TAB_CONFIG[route.name] || { icon: 'home-outline', iconFocused: 'home', title: route.name };
 
           return (
             <Pressable
@@ -81,7 +81,12 @@ function CustomTabBar({ state, navigation }: any) {
               onPress={() => navigation.navigate(route.name)}
               style={styles.tabItem}
             >
-              <TabIcon focused={isFocused} icon={config.icon} title={config.title} />
+              <TabIcon 
+                focused={isFocused} 
+                iconName={config.icon} 
+                iconFocusedName={config.iconFocused} 
+                title={config.title} 
+              />
             </Pressable>
           );
         })}
@@ -124,14 +129,6 @@ const styles = StyleSheet.create({
     width: HIGHLIGHT_WIDTH,
     height: HIGHLIGHT_HEIGHT,
     borderRadius: HIGHLIGHT_HEIGHT / 2,
-  },
-  iconFocused: {
-    width: ICON_SIZE_FOCUSED,
-    height: ICON_SIZE_FOCUSED,
-  },
-  icon: {
-    width: ICON_SIZE,
-    height: ICON_SIZE,
   },
   textFocused: {
     color: '#151312',
