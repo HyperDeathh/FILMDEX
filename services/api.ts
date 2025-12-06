@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export const TMDB_CONFIG = {
   BASE_URL: "https://api.themoviedb.org/3",
   API_KEY: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
@@ -6,6 +8,27 @@ export const TMDB_CONFIG = {
     Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
   },
 };
+
+// Use proxy on web to avoid CORS issues
+const isWeb = Platform.OS === 'web';
+const PROXY_BASE_URL = '/api/tmdb';
+
+// Helper to build API URL with proxy support for web
+function buildProxyUrl(endpoint: string, params: URLSearchParams): string {
+  if (isWeb) {
+    params.set('endpoint', endpoint);
+    return `${PROXY_BASE_URL}?${params.toString()}`;
+  }
+  return `${TMDB_CONFIG.BASE_URL}/${endpoint}?${params.toString()}`;
+}
+
+// Helper to get headers (proxy doesn't need auth headers)
+function getHeaders(): HeadersInit {
+  if (isWeb) {
+    return { accept: 'application/json' };
+  }
+  return TMDB_CONFIG.headers;
+}
 
 export interface Movie {
   id: number;
@@ -56,15 +79,6 @@ export interface Genre {
   name: string;
 }
 
-const buildSearchUrl = (params: URLSearchParams, query?: string) => {
-  params.append("language", "en-US");
-  params.append("include_adult", "false");
-  if (query) {
-    params.append("query", query);
-  }
-  return params;
-};
-
 export const fetchMovies = async ({
   query,
   genreId,
@@ -75,12 +89,16 @@ export const fetchMovies = async ({
   page?: number;
 }): Promise<MovieListResponse> => {
   const isSearch = Boolean(query);
-  const endpoint = isSearch
-    ? `${TMDB_CONFIG.BASE_URL}/search/movie`
-    : `${TMDB_CONFIG.BASE_URL}/discover/movie`;
+  const endpoint = isSearch ? "search/movie" : "discover/movie";
+  
   const params = new URLSearchParams();
-  buildSearchUrl(params, query);
+  params.append("language", "en-US");
+  params.append("include_adult", "false");
   params.append("page", page.toString());
+  
+  if (query) {
+    params.append("query", query);
+  }
   if (!isSearch) {
     params.append("sort_by", "popularity.desc");
   }
@@ -88,9 +106,10 @@ export const fetchMovies = async ({
     params.append("with_genres", genreId.toString());
   }
 
-  const response = await fetch(`${endpoint}?${params.toString()}`, {
+  const url = buildProxyUrl(endpoint, params);
+  const response = await fetch(url, {
     method: "GET",
-    headers: TMDB_CONFIG.headers,
+    headers: getHeaders(),
   });
 
   if (!response.ok) {
@@ -102,13 +121,14 @@ export const fetchMovies = async ({
 };
 
 export const fetchGenres = async (): Promise<Genre[]> => {
-  const response = await fetch(
-    `${TMDB_CONFIG.BASE_URL}/genre/movie/list?language=en-US`,
-    {
-      method: "GET",
-      headers: TMDB_CONFIG.headers,
-    }
-  );
+  const params = new URLSearchParams();
+  params.append("language", "en-US");
+  
+  const url = buildProxyUrl("genre/movie/list", params);
+  const response = await fetch(url, {
+    method: "GET",
+    headers: getHeaders(),
+  });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch genres: ${response.statusText}`);
@@ -143,9 +163,7 @@ export const fetchTvShows = async ({
   page?: number;
 } = {}): Promise<TvListResponse> => {
   const isSearch = Boolean(query);
-  const endpoint = isSearch
-    ? `${TMDB_CONFIG.BASE_URL}/search/tv`
-    : `${TMDB_CONFIG.BASE_URL}/discover/tv`;
+  const endpoint = isSearch ? "search/tv" : "discover/tv";
 
   const params = new URLSearchParams();
   params.append("language", "en-US");
@@ -153,9 +171,10 @@ export const fetchTvShows = async ({
   if (!isSearch) params.append("sort_by", "popularity.desc");
   if (query) params.append("query", query);
 
-  const response = await fetch(`${endpoint}?${params.toString()}`, {
+  const url = buildProxyUrl(endpoint, params);
+  const response = await fetch(url, {
     method: "GET",
-    headers: TMDB_CONFIG.headers,
+    headers: getHeaders(),
   });
 
   if (!response.ok) {
@@ -171,11 +190,13 @@ export const fetchMovieDetails = async (
 ): Promise<MovieDetails> => {
   // First try movie endpoint
   try {
-    const movieUrl = `${TMDB_CONFIG.BASE_URL}/movie/${movieId}?language=en-US`;
+    const params = new URLSearchParams();
+    params.append("language", "en-US");
     
+    const movieUrl = buildProxyUrl(`movie/${movieId}`, params);
     const response = await fetch(movieUrl, {
       method: "GET",
-      headers: TMDB_CONFIG.headers,
+      headers: getHeaders(),
     });
 
     if (response.ok) {
@@ -185,10 +206,13 @@ export const fetchMovieDetails = async (
     
     // If movie endpoint fails, try TV endpoint
     console.log("Movie endpoint failed, trying TV endpoint...");
-    const tvUrl = `${TMDB_CONFIG.BASE_URL}/tv/${movieId}?language=en-US`;
+    const tvParams = new URLSearchParams();
+    tvParams.append("language", "en-US");
+    
+    const tvUrl = buildProxyUrl(`tv/${movieId}`, tvParams);
     const tvResponse = await fetch(tvUrl, {
       method: "GET", 
-      headers: TMDB_CONFIG.headers,
+      headers: getHeaders(),
     });
 
     if (tvResponse.ok) {

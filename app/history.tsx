@@ -56,7 +56,11 @@ const History = () => {
   return (
     <View className="flex-1 bg-primary">
       <Stack.Screen options={{ headerShown: false }} />
-      <Image source={images.bg} className="absolute w-full z-0" />
+      <Image 
+        source={images.bg} 
+        className="absolute w-full h-full z-0" 
+        resizeMode="cover"
+      />
       
       <View className="pt-16 pb-6 px-5 items-center">
          <Text className="text-2xl font-bold text-white">Watch History</Text>

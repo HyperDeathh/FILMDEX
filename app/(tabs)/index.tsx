@@ -220,7 +220,11 @@ export default function Index() {
 
   return (
     <View className="flex-1 bg-primary">
-      <Image source={images.bg} className="absolute w-full z-0" />
+      <Image 
+        source={images.bg} 
+        className="absolute w-full h-full z-0" 
+        resizeMode="cover"
+      />
       <FlatList
         ref={flatListRef}
         data={items}
