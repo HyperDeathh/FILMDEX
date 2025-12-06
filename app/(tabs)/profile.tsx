@@ -96,7 +96,6 @@ const Profile = () => {
     )
   }
 
-  // Logged in user profile
   if (user) {
     return (
       <View className="flex-1 bg-primary">
